@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Squad Showdown — Rules</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #17150f;
+    --panel: #1e1b15;
+    --line: #322e25;
+    --flame: #b25a38;
+    --amber: #a9824c;
+    --text: #e6e0d3;
+    --muted: #9c9585;
+    --muted2: #857c6c;
+    --danger: #9c4636;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  h1,h2,h3, .display{
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.01em;
+  }
+  .wrap{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 22px;
+  }
+
+  /* HERO */
+  .hero{
+    padding: 64px 0 40px;
+    border-bottom: 1px solid var(--line);
+    background:
+      radial-gradient(circle at 82% 18%, rgba(178,90,56,0.08), transparent 45%),
+      var(--bg);
+  }
+  .zone-mark{
+    width: 46px; height: 46px;
+    border: 2px solid var(--flame);
+    border-radius: 50%;
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .zone-mark::after{
+    content:"";
+    position:absolute;
+    top:50%; left:50%;
+    width:6px; height:6px;
+    background: var(--flame);
+    border-radius:50%;
+    transform: translate(-50%,-50%);
+  }
+  .hero h1{
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 0.98;
+    margin: 0 0 14px;
+    color: var(--text);
+    text-transform: uppercase;
+  }
+  .hero p{
+    color: var(--muted2);
+    font-size: 17px;
+    max-width: 46ch;
+    margin: 0 0 26px;
+  }
+  .hero-stats{
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .stat .num{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--amber);
+    line-height: 1;
+  }
+  .stat .lbl{
+    font-size: 13px;
+    color: var(--muted2);
+    margin-top: 4px;
+  }
+
+  /* SECTION GENERAL */
+  section{
+    padding: 46px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  section h2{
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0 0 26px;
+    color: var(--text);
+  }
+
+  /* RULES */
+  .rule{
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+  }
+  .rule:first-of-type{ border-top: none; padding-top: 0; }
+  .rule .n{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    color: var(--muted2);
+    min-width: 28px;
+    padding-top: 2px;
+  }
+  .rule .body h3{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: var(--text);
+  }
+  .rule .body p{
+    margin: 0;
+    color: var(--muted2);
+    font-size: 15px;
+  }
+  .rule.strict .n{ color: var(--danger); }
+  .rule.strict h3{ color: var(--danger); }
+
+  /* PRIZE TABLE */
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 22px;
+  }
+  th, td{
+    text-align: left;
+    padding: 14px 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  th{
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--muted2);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  td{
+    font-size: 16px;
+  }
+  td.place{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--amber);
+  }
+  td.amt{
+    color: var(--text);
+    font-weight: 500;
+  }
+  .prize-note{
+    color: var(--muted2);
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  /* CTA */
+  .cta{
+    display: block;
+    text-align: center;
+    background: var(--flame);
+    color: #171412;
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 16px;
+    border-radius: 2px;
+  }
+  .cta:active{ opacity: 0.85; }
+  .cta-note{
+    text-align: center;
+    color: var(--muted2);
+    font-size: 13px;
+    margin-top: 12px;
+  }
+
+  footer{
+    padding: 30px 0 50px;
+    color: var(--muted2);
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero wrap">
+  <div class="zone-mark"></div>
+  <h1>Squad Showdown</h1>
+  <p>Free Fire Battle Royale — Squad tournament. Long-format matches, mobile only, fair play strictly enforced.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="num">₹200</div><div class="lbl">Entry per squad</div></div>
+    <div class="stat"><div class="num">4</div><div class="lbl">Players per squad</div></div>
+    <div class="stat"><div class="num">BR</div><div class="lbl">Battle Royale, full map</div></div>
+  </div>
+</div>
+
+<section class="wrap">
+  <h2>Rules</h2>
+
+  <div class="rule strict">
+    <div class="n">01</div>
+    <div class="body">
+      <h3>No hacking, no exceptions</h3>
+      <p>Any confirmed or suspected use of hacks, aimbots, wallhacks, or any third-party tool results in immediate disqualification of the entire squad. No warning, no refund.</p>
+    </div>
+  </div>
+
+  <div class="rule strict">
+    <div class="n">02</div>
+    <div class="body">
+      <h3>Mobile devices only</h3>
+      <p>Emulators and PC/keyboard-mouse setups are not allowed. Players found using an emulator will be disqualified along with their squad.</p>
+    </div>
+  </div>
+
+  <div class="rule">
+    <div class="n">03</div>
+    <div class="body">
+      <h3>Squad registration is final</h3>
+      <p>Once a squad is registered with 4 player IDs, no substitutions are allowed after the room ID is shared.</p>
+    </div>
+  </div>
+
+  <div class="rule">
+    <div class="n">04</div>
+    <div class="body">
+      <h3>Room ID and password</h3>
+      <p>Shared in the Telegram group 10 minutes before match start. Do not share the room details outside the group.</p>
+    </div>
+  </div>
+
+  <div class="rule">
+    <div class="n">05</div>
+    <div class="body">
+      <h3>No teaming</h3>
+      <p>Squads found cooperating with or sparing another squad on purpose will be disqualified.</p>
+    </div>
+  </div>
+
+  <div class="rule">
+    <div class="n">06</div>
+    <div class="body">
+      <h3>Connection issues</h3>
+      <p>Re-entry into a running match is not possible. Disconnects during a match are not the organizer's responsibility — no re-match will be arranged for individual disconnects.</p>
+    </div>
+  </div>
+
+  <div class="rule">
+    <div class="n">07</div>
+    <div class="body">
+      <h3>Scoring</h3>
+      <p>Points are based on placement plus kills. Final standings are calculated after all scheduled matches, and the organizer's decision on scoring is final.</p>
+    </div>
+  </div>
+
+  <div class="rule">
+    <div class="n">08</div>
+    <div class="body">
+      <h3>Respect the organizers and other players</h3>
+      <p>Abusive behavior toward organizers or other squads in the group or in-game voice chat can lead to disqualification.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Prize Pool</h2>
+  <table>
+    <thead>
+      <tr><th>Position</th><th>Prize</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="place">1st</td><td class="amt">50% of total pool</td></tr>
+      <tr><td class="place">2nd</td><td class="amt">30% of total pool</td></tr>
+      <tr><td class="place">3rd</td><td class="amt">20% of total pool</td></tr>
+    </tbody>
+  </table>
+  <p class="prize-note">Total pool is built from squad entry fees. Final prize amount depends on number of squads registered — confirmed and paid out inside the Telegram group after every tournament.</p>
+
+  <a class="cta" href="https://t.me/+4jgLv0-8yRBhYTU9" target="_blank" rel="noopener">Join Telegram to Register</a>
+  <p class="cta-note">Registration, room ID, and prize pool updates are posted there.</p>
+</section>
+
+<footer class="wrap">
+  Squad Showdown · Rules subject to update before each tournament, always announced in the Telegram group in advance.
+</footer>
+
+</body>
+</html>
